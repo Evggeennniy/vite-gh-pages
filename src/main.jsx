@@ -12,7 +12,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/",
+    basename: "/vite-gh-pages",
   }
 );
 
