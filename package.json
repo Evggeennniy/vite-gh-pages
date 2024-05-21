@@ -10,8 +10,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -m \"Deploy React app to GitHub Pages\" -r https://github.com/Evggeennniy/vite-gh-pages.git"
+    "deploy": "gh-pages -d dist -m \"Deploy React app to GitHub Pages\" -r https://github.com/Evggeennniy/vite-gh-pages.git"
   },
   "dependencies": {
     "axios": "^1.6.8",
