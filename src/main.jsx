@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Users from "../routes/Users";
+import Albums from "../routes/Albums";
+import Photos from "../routes/Photos";
 import "./index.css";
 
 const router = createBrowserRouter(
@@ -9,6 +11,14 @@ const router = createBrowserRouter(
     {
       path: "/",
       element: <Users />,
+    },
+    {
+      path: "/user/:userId/albums",
+      element: <Albums />,
+    },
+    {
+      path: "/album/:albumId/photos",
+      element: <Photos />,
     },
   ],
   {
