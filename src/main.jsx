@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "../store/store";
-import Users from "../routes/Users";
-import Albums from "../routes/Albums";
-import Photos from "../routes/Photos";
+import store from "./store/store";
+import Users from "./routes/Users";
+import Albums from "./routes/Albums";
+import Photos from "./routes/Photos";
 import { ToDoListRedux } from "./components/List";
 import "./index.css";
 

@@ -1,14 +1,6 @@
 import { ADD_TASK, TOGGLE_TASK, SET_NEW_TASK } from "../actions/actions";
 
-const initialState = {
-  tasks: [
-    { id: 1, text: "Завершить проект", isCompleted: false },
-    { id: 2, text: "Прочитать книгу", isCompleted: true },
-  ],
-  newTask: "",
-};
-
-const taskReducer = (state = initialState, action) => {
+const taskReducer = (state, action) => {
   switch (action.type) {
     case ADD_TASK:
       const newId =

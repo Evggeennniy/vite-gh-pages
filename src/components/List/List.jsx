@@ -1,26 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTask, toggleTask, setNewTask } from "../../../taskSlice/taskSlice";
+import {
+  setNewTask,
+  getTasks,
+  createTask,
+  toggleTaskStatus,
+  deleteTask,
+} from "../../taskSlice/taskSlice";
 
 export const ToDoListRedux = () => {
   const tasks = useSelector((state) => state.tasks.tasks);
   const newTask = useSelector((state) => state.tasks.newTask);
   const dispatch = useDispatch();
 
-  console.log("tasks:", tasks);
-  console.log("newTask:", newTask);
+  useEffect(() => {
+    dispatch(getTasks());
+  }, []);
 
   const handleToggle = (id) => {
     console.log("Toggling task:", id);
-    dispatch(toggleTask(id));
+    dispatch(toggleTaskStatus(id));
   };
 
   const handleAddTask = () => {
     if (newTask !== "") {
       console.log("Adding task:", newTask);
-      dispatch(addTask(newTask));
+      dispatch(createTask(newTask));
       dispatch(setNewTask(""));
     }
+  };
+
+  const handleDelete = (id) => {
+    console.log("Deleting task:", id);
+    dispatch(deleteTask(id));
   };
 
   const handleInputChange = (event) => {
@@ -34,15 +46,18 @@ export const ToDoListRedux = () => {
     <div>
       <ul>
         {sortedTasks.map((task) => (
-          <li
-            key={task.id}
-            style={{
-              textDecoration: task.isCompleted ? "line-through" : "none",
-            }}
-            onClick={() => handleToggle(task.id)}
-          >
-            {task.text}
-          </li>
+          <div>
+            <li
+              key={task.id}
+              style={{
+                textDecoration: task.isCompleted ? "line-through" : "none",
+              }}
+              onClick={() => handleToggle(task.id)}
+            >
+              {task.text}
+            </li>
+            <button onClick={() => handleDelete(task.id)}>Delete</button>
+          </div>
         ))}
       </ul>
       <input
